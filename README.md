@@ -1,5 +1,5 @@
-## SYMFONY 4
-Projeto introdutorio ao framework PHP Symfony 4.
+## SYMFONY 5
+Projeto introdutorio ao framework PHP Symfony 5.
 
 ---
 
