@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Carro;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,5 +27,20 @@ class ExemploController extends AbstractController {
         return $this->render("exemplo/exemplo.html.twig", [
             "alerta" => "Eu sou um alerta!"
         ]);
+    }
+
+    /**
+     * @return Response
+     * @Route("cadastro-carro")
+     */
+    public function addCarro () {
+        $ge = $this->getDoctrine()->getManager(); // Chamando gerenciador de entidades do Doctrine
+        $carro = new Carro();
+        $carro->setModelo("Hyundai")->setNome("HB20");
+
+        $ge->persist($carro); // Persistindo dados na base
+        $ge->flush(); // Limpar e jogar para base
+
+        return new Response($carro->getNome() . " salvo com sucesso!");
     }
 }
